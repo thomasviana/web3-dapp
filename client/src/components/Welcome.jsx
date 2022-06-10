@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { SiEthereum } from "react-icons/si";
@@ -20,7 +20,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
-  const { connectWallet, currentAccount, formData, handleChange, sendTransaction } = useContext(TransactionContext);
+  const { connectWallet, currentAccount, formData, handleChange, sendTransaction, isLoading } = useContext(TransactionContext);
 
   const handleSubmit = (event) => {
     const { addressTo, amount, keyword, message } = formData;
@@ -98,7 +98,7 @@ const Welcome = () => {
 
             <div className="h-[1px] w-full bg-gray-400 my-2" />
 
-            {false
+            {isLoading
               ? <Loader />
               : (
                 <button
